@@ -11,12 +11,15 @@ $(output)/%.pdf: $(source)/%.md
 		--variable monofont="PragmataPro Mono" \
 		--variable fontsize=12pt \
 		--variable theme=Madrid \
-		-f markdown  $< \
+		-f markdown $< \
 		-t beamer \
 		--highlight-style tango \
 		-o $@
 
 .PHONY : clean
+
+watch:
+	ls docs/*.md | entr make all
 
 clean:
 	rm -f $(output)/*.pdf

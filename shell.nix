@@ -4,5 +4,6 @@ in
 pkgs.mkShell {
   buildInputs = [
     pkgs.pandoc
+    pkgs.entr
   ];
 }
