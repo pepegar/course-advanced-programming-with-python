@@ -25,17 +25,13 @@ Pepe García
  
 
 About the course
-----------------
+================
 
-[10 sessions]{style="font-size:2.0em"}
-
-[8 lectures]{style="font-size:2.0em"}
-
-[1 workgroup assignment]{style="font-size:2.0em"}
-
-[1 individual assignment]{style="font-size:2.0em"}
-
-[1 final exam]{style="font-size:2.0em"}
+>- [10 sessions]{style="font-size:2.0em"}
+>- [8 lectures]{style="font-size:2.0em"}
+>- [1 workgroup assignment]{style="font-size:2.0em"}
+>- [1 individual assignment]{style="font-size:2.0em"}
+>- [1 final exam]{style="font-size:2.0em"}
 
 Syllabus
 ========
@@ -145,7 +141,7 @@ app = Flask("simplest server")
 @app.route("/hello")
 def hello():
     return "hello from the web!"
-    
+
 app.run()
 ```
 
