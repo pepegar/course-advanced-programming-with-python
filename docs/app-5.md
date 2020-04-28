@@ -1,3 +1,11 @@
+---
+title: Advanced Programming with Python. Session 5
+author: Pepe García
+email: jgarciah@faculty.ie.edu
+date: 2020-04-20
+lang: en
+---
+
 Advanced Programming with Python. Session 5
 ===========================================
 
