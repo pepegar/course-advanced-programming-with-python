@@ -9,7 +9,6 @@ lang: en
 Advanced Programming with Python. Session 4
 ===========================================
 
-https://slides.com/pepegar/app-4/live
 
 Plan for today
 ==============

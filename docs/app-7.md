@@ -9,7 +9,6 @@ lang: en
 Advanced Programming with Python. Session 7
 ===========================================
 
-https://slides.com/pepegar/app-7/live
 
 Dash
 ====

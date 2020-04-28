@@ -9,7 +9,6 @@ lang: en
 Advanced Programming with Python. Session 1
 ===========================================
 
-https://slides.com/pepegar/app-1/live
 
 Professor
 =========

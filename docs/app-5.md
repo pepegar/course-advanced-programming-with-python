@@ -9,7 +9,6 @@ lang: en
 Advanced Programming with Python. Session 5
 ===========================================
 
-https://slides.com/pepegar/app-5/live
 
 Plan for today
 ==============
