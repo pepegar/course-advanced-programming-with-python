@@ -62,8 +62,6 @@ Web servers can do a lot more than returning JSON.  In order to create
 websites, we need to understand how HTML works, we will use Codecademy for this
 session.
 
-    Other : Learn HTML
-
 # SESSION 6 (FACE TO FACE)
 
 ## HTML
@@ -141,7 +139,7 @@ course and we will have time to answer questions students may have
 # Grading criteria
 
   -----------------------------------------------------------------------
-  Criteria\                           Score
+  Criteria                            Score
   ----------------------------------- -----------------------------------
   Class participation                 10%
 
@@ -152,29 +150,53 @@ course and we will have time to answer questions students may have
 
 # Joining the new organization
 
-# Recap
+Accept this (@pepe, send link to Zoom chat)
 
-HTTP
-====
+<https://classroom.github.com/a/MRDwIdta>
 
-# HTTP Review
+# Checkpoint
+
+# HTTP
+
+. . .
 
 HTTP is a request-response protocol.  HTTP **clients send requests** and
 HTTP **servers answer with responses**
 
-# HTTP Methods
+# HTTP
 
 Depending on the intention of the request, HTTP describes different
 methods:
 
+. . .
+
   method       **intention**
   ------------ ----------------------
-  **GET**      access to a resource
+  **GET**      read to a resource
   **POST**     update a resource
   **PUT**      create a resource
   **DELETE**   delete a resource
 
-# HTTP servers
+# HTTP
+
+![](https://flask.palletsprojects.com/en/1.1.x/_images/flask-logo.png){width=200px}
+
+We will  use `flask` in this course to learn and create web servers in Python.
+
+. . .
+
+`flask` is bundled in Anaconda already, so we don't need to download it.
+
+# HTTP - flask
+
+
+\begin{exampleblock}{example: simple flask application}
+
+how do we use `flask`?
+
+\end{exampleblock}
+
+# HTTP - flask
 
 ```python
 from flask import Flask
@@ -220,11 +242,11 @@ parameter
 
 ```python
 @app.route("/hello", method=["GET"])
-def hello():
+def goodbye():
     return "hi!"
 
 @app.route("/goodbye", method=["POST"])
-def hello():
+def goodbye():
     return "bye!"
 ```
 
@@ -243,11 +265,13 @@ def hello():
     return jsonify({"message": "hello", "name": "Pepe"})
 ```
 
-# Practice
+# HTTP
+
+## Exercise
 
 Create a web server that has an endpoint to which we can call to get a
 proper salutation.  For example, calling to **/hello/Pepe** should
-return the json **{\"message\": \"hello\", \"name\": \"Pepe\"}**
+return the json **{"message": "hello", "name": "Pepe"}**
 
 # HTTP clients
 
