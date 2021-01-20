@@ -27,11 +27,11 @@ function.
 from flask import send_from_directory
 
 ```python
-@app.route("/images/<image>.jpg")
+@app.route("/images/<image>.png")
 def serve_image(image):
     return send_from_directory(
         "images/",
-        filename="{}.jpg".format(image))
+        filename="{}.png".format(image))
 ```
 
 # Serving static files
@@ -39,28 +39,9 @@ def serve_image(image):
 Do you see something that can go wrong in the previous route?  Try to
 search for an image that's not there.
 
-# Serving static files
+# Practice
 
-Luckily, **send_from_directory** comes with error control builtin, but
-we can fine-tune it if we want
-
-```python
-from flask import send_from_directory, abort
-from werkzeug.exceptions import NotFound
-
-@app.route("/images/<image>.jpg")
-def serve_image(image):
-    try:
-        return send_from_directory(
-            "images/",
-            filename="{}.jpg".format(image))
-    except NotFound:
-        return abort(404)
-```
-
-Practice#
-
-## **classroom link**
+## https://github.com/app-2020/app-sync-4
 
 See example-1
 
@@ -77,14 +58,6 @@ def index():
     return send_from_directory("html", filename="index.html")
 ```
 
-# Practice
-
-https://github.com/mcsbt-advanced-python-2020/session-3
-
- 
-
-See example-2
-
 # HTML
 
 **HTML** stands for **Hypertext Markup Language**.  It's a language
@@ -95,7 +68,7 @@ should be presented in webpages
 
 HTML documents are defined by tags, which look as follows:
 
-```xml
+```html
 <tag>content</tag>
 ```
 
@@ -103,7 +76,7 @@ HTML documents are defined by tags, which look as follows:
 
 Let's see a real world example
 
-```xml
+```html
 <p>this is a paragraph</p>
 ```
 
@@ -114,7 +87,7 @@ the **`<p>`** tag is used to represent paragraphs!
 In HTML, all the visible structure of the document must go inside the
 **`<body>`** tag
 
-```xml
+```html
 <body>
   <p>the 'p' tag represents a paragraph</p>
 </body>
@@ -127,7 +100,7 @@ go inside the **`<head>`** tag.
 
 For example, the title tag is one of these tags:
 
-```xml
+```html
 <head>
   <title>this is the title</title>
 </head>
@@ -141,7 +114,7 @@ For example, the title tag is one of these tags:
 Finally, for an HTML document to be well formed, it needs to be wrapped
 in the HTML tag
 
-```xml
+```html
 <html>
   <head>
     <title>this is the title</title>
@@ -162,9 +135,9 @@ Now let's see some HTML tags
 
 # Paragraphs
 
-text paragraphs in HTML are represented with the **<p>** tag
+text paragraphs in HTML are represented with the **`<p>`** tag
 
-```xml
+```html
 <p>
 this is the first paragraph of my text.  As you can see it
 also contains <strong>other tags</strong>
@@ -190,10 +163,9 @@ What's the most important heading in the image? and the second one?
 # Headings
 
 HTML provides us with 6 different tags to represent 6 different levels
-of headings: **<h1>**, **<h2>**, **<h3>**, **<h4>**, **<h5>**,
-and **<h6>**.
+of headings.
 
-```xml
+```html
 <h1>this is the h1</h1>
 <h2>this is the h2</h2>
 <h3>this is the h3</h3>
@@ -209,23 +181,26 @@ other documents when clicking them.
 
 # Hyperlinks
 
-We create links in HTML using the **<a>** tag.
+We create links in HTML using the **`<a>`** tag. `a`, in this case, stands for _anchor_.
 
-```xml
+```html
 <a>this is a link, but doesn't have an address to go to...</a>
 ```
 
 In order to give an address to the link, we need to use the **href
 attribute**:
 
-```xml
+```html
 <a href="https://google.com">this takes you to Google!</a>
 ```
 
 # Images
 
-We use the **img** tag with the **src** attribute in order to create
-images in our HTML documents
+We use the **`img`** tag with the **`src`** attribute in order to embed
+images in our HTML documents.
+
+The `src` attribue can be either a route to a local file, or a url to
+a file in the Internet.
 
 ```python
 <img src="/home/pepe/Desktop/image.jpg">
