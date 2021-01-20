@@ -1,89 +1,83 @@
 ---
-title: Advanced Programming with Python. Session 3
+title: Advanced Programming with Python
 author: Pepe García
 email: jgarciah@faculty.ie.edu
 date: 2020-04-20
 lang: en
 ---
 
-Advanced Programming with Python. Session 3
-===========================================
+# Plan for today
 
+- Review homework
+- Sending files from folder
+- working with HTML
 
-Plan for today
-==============
+# Homework
 
--   Sending files from folder
--   working with HTML
-
-Serving static files
-====================
+# Serving static files
 
 Being able to serve static files is vital for websites.  They can be
 images, videos, CSS templates, or anything you imagine.
 
-Serving static files
-====================
+# Serving static files
 
-In flask we can serve static files using the **send\_from\_directory**
+In flask we can serve static files using the **send_from_directory**
 function.
 
-    from flask import send_from_directory
+from flask import send_from_directory
 
-    @app.route("/images/<image>.jpg")
-    def serve_image(image):
-        return send_from_directory(
-            "images/", 
-            filename="{}.jpg".format(image))
+```python
+@app.route("/images/<image>.jpg")
+def serve_image(image):
+    return send_from_directory(
+        "images/",
+        filename="{}.jpg".format(image))
+```
 
-Serving static files
-====================
+# Serving static files
 
 Do you see something that can go wrong in the previous route?  Try to
-search for an image that\'s not there.
+search for an image that's not there.
 
-Serving static files
-====================
+# Serving static files
 
-Luckily, **send\_from\_directory** comes with error control builtin, but
+Luckily, **send_from_directory** comes with error control builtin, but
 we can fine-tune it if we want
 
-    from flask import send_from_directory, abort
-    from werkzeug.exceptions import NotFound
+```python
+from flask import send_from_directory, abort
+from werkzeug.exceptions import NotFound
 
-    @app.route("/images/<image>.jpg")
-    def serve_image(image):
-        try:
-            return send_from_directory(
-                "images/", 
-                filename="{}.jpg".format(image))
-        except NotFound:
-            return abort(404)
+@app.route("/images/<image>.jpg")
+def serve_image(image):
+    try:
+        return send_from_directory(
+            "images/",
+            filename="{}.jpg".format(image))
+    except NotFound:
+        return abort(404)
+```
 
-Practice
-========
+Practice#
 
-https://github.com/mcsbt-advanced-python-2020/session-3
-
- 
+## **classroom link**
 
 See example-1
 
-Serving HTML
-============
+# Serving HTML
 
 HTML files, as files of any other type can be served using the
-**send\_from\_directory** function.
+**send_from_directory** function.
 
-Serving HTML
-============
+# Serving HTML
 
-    @app.route("/")
-    def index():
-        return send_from_directory("html", filename="index.html")
+```python
+@app.route("/")
+def index():
+    return send_from_directory("html", filename="index.html")
+```
 
-Practice
-========
+# Practice
 
 https://github.com/mcsbt-advanced-python-2020/session-3
 
@@ -91,54 +85,49 @@ https://github.com/mcsbt-advanced-python-2020/session-3
 
 See example-2
 
-HTML
-====
+# HTML
 
-**HTML** stands for **Hypertext Markup Language**.  It\'s a language
+**HTML** stands for **Hypertext Markup Language**.  It's a language
 that describes how the information\
 should be presented in webpages
 
-HTML
-====
+# HTML
 
 HTML documents are defined by tags, which look as follows:
 
-``` {.xml}
+```xml
 <tag>content</tag>
 ```
 
-HTML
-====
+# HTML
 
-Let\'s see a real world example
+Let's see a real world example
 
-``` {.xml}
+```xml
 <p>this is a paragraph</p>
 ```
 
-the \<p\> tag is used to represent paragraphs!
+the **`<p>`** tag is used to represent paragraphs!
 
-HTML structure
-==============
+# HTML structure
 
 In HTML, all the visible structure of the document must go inside the
-**\<body\>** tag
+**`<body>`** tag
 
-``` {.xml}
+```xml
 <body>
   <p>the 'p' tag represents a paragraph</p>
 </body>
 ```
 
-HTML structure
-==============
+# HTML structure
 
 On the other hand, all the HTML tags that are not meant to be rendered
-go inside the **\<head\>** tag.\
-\
+go inside the **`<head>`** tag.
+
 For example, the title tag is one of these tags:
 
-``` {.xml}
+```xml
 <head>
   <title>this is the title</title>
 </head>
@@ -147,13 +136,12 @@ For example, the title tag is one of these tags:
 </body>
 ```
 
-HTML structure
-==============
+# HTML structure
 
 Finally, for an HTML document to be well formed, it needs to be wrapped
 in the HTML tag
 
-``` {.xml}
+```xml
 <html>
   <head>
     <title>this is the title</title>
@@ -164,22 +152,19 @@ in the HTML tag
 </html>
 ```
 
-HTML structure
-==============
+# HTML structure
 
-Let\'s create our first web page!
+Let's create our first web page!
 
-Some HTML tags
-==============
+# Some HTML tags
 
-Now let\'s see some HTML tags
+Now let's see some HTML tags
 
-Paragraphs
-==========
+# Paragraphs
 
-text paragraphs in HTML are represented with the **\<p\>** tag
+text paragraphs in HTML are represented with the **<p>** tag
 
-``` {.xml}
+```xml
 <p>
 this is the first paragraph of my text.  As you can see it
 also contains <strong>other tags</strong>
@@ -194,23 +179,21 @@ it
 </p>
 ```
 
-Headings
-========
+# Headings
 
 Headings are used in html in the same way a word doc, or in a newspaper,
-to capture reader\'s attention.
+to capture reader's attention.
 
 
-What\'s the most important heading in the image? and the second one?
+What's the most important heading in the image? and the second one?
 
-Headings
-========
+# Headings
 
 HTML provides us with 6 different tags to represent 6 different levels
-of headings: **\<h1\>**, **\<h2\>**, **\<h3\>**, **\<h4\>**, **\<h5\>**,
-and **\<h6\>**.
+of headings: **<h1>**, **<h2>**, **<h3>**, **<h4>**, **<h5>**,
+and **<h6>**.
 
-``` {.xml}
+```xml
 <h1>this is the h1</h1>
 <h2>this is the h2</h2>
 <h3>this is the h3</h3>
@@ -219,53 +202,44 @@ and **\<h6\>**.
 <h6>this is the h6</h6>
 ```
 
-Hyperlinks
-==========
+# Hyperlinks
 
 Hyperlinks are the most vital part of HTML.  They allow us to go to
 other documents when clicking them.
 
+# Hyperlinks
 
-Hyperlinks
-==========
+We create links in HTML using the **<a>** tag.
 
-We create links in HTML using the **\<a\>** tag.
-
-``` {.xml}
+```xml
 <a>this is a link, but doesn't have an address to go to...</a>
 ```
 
 In order to give an address to the link, we need to use the **href
 attribute**:
 
-``` {.xml}
+```xml
 <a href="https://google.com">this takes you to Google!</a>
 ```
 
-Images
-======
+# Images
 
 We use the **img** tag with the **src** attribute in order to create
 images in our HTML documents
 
-    <img src="/home/pepe/Desktop/image.jpg">
+```python
+<img src="/home/pepe/Desktop/image.jpg">
+```
 
-Homework
-========
+# Homework
 
 Create the HTML for what it could be your Wikipedia entry.
 
- 
+- different parts of your life
+- links to your presence in the web
 
-\- different parts of your life
+# Resources
 
-\- links to your presence in the web
+Codecademy course to learn HTML: **<https://www.codecademy.com/courses/learn-html>**
 
-Resources
-=========
-
-Free course to learn HTML: https://www.codecademy.com/courses/learn-html
-
-Mozilla development network docs:
-
-https://developer.mozilla.org/en-US/docs/Web/HTML
+Mozilla development network docs: **<https://developer.mozilla.org/en-US/docs/Web/HTML>**
