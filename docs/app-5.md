@@ -180,6 +180,12 @@ def handle_form_submission():
 the keys in the **`form`** dictionary are the values we put in the
 **`name`** attribute of the **`<input>`**
 
+# Differences between GET and POST in forms
+
+The big difference between them is that, when selecting `GET`, the
+data will be sent as query parameters, while when selecting `POST`, it
+will be sent in the request body
+
 # Handling HTML forms in flask
 
 ## Exercise
