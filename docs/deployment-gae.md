@@ -156,6 +156,11 @@ Now there should be a **`main.py`** file in our folder, **without the
 `app.run()`**.  Remember that **GAE** is gonna look for the variable
 called app for us, and run it.  We won't need to run it manually.
 
+```sh
+$ ls
+main.py
+```
+
 # Practice
 
 ## steps
@@ -212,8 +217,47 @@ app.yaml              main.py          requirements.txt
 - Create needed files
 - **Deploying the app in Google App Engine**
 
-# Practice. Deploying our app in GAE
+# Practice. Deploying our app to GAE
+
+```sh
+$ gcloud app create
+
+...
+
+Please enter your numeric choice:  8
+
+Creating App Engine application in project [pepegar-test-1] and region [europe-west]....done.
+Success! The app is now created. Please use `gcloud app deploy` to deploy your first app.
+
+```
+
+# Practice. Deploying our app to GAE
 
 ```sh
 $ gcloud app deploy
+
+...
+
+Do you want to continue (Y/n)?  Y
+
+Beginning deployment of service [default]...
+╔════════════════════════════════════════════════════════════╗
+╠═ Uploading 3 files to Google Cloud Storage                ═╣
+╚════════════════════════════════════════════════════════════╝
+File upload done.
+Updating service [default]...done.
+Setting traffic split for service [default]...done.
+Deployed service [default] to [https://pepegar-test-1.ew.r.appspot.com]
+
+You can stream logs from the command line by running:
+  $ gcloud app logs tail -s default
+
+To view your application in the web browser run:
+  $ gcloud app browse
 ```
+
+# Practice. Deploying our app to GAE
+
+\begin{alertblock}{Attention}
+With a real GCP account, last command may fail because of Google Cloud Build, you'll need to activate it.
+\end{alertblock}
