@@ -52,6 +52,7 @@ to Google App Engine.
 
 ## steps
 
+- Authenticate with **`gcloud`**
 - Create a project in **`gcloud`**
 - Create a simple flask application
 - Create needed files
@@ -61,6 +62,23 @@ to Google App Engine.
 
 ## steps
 
+- **Authenticate with `gcloud`**
+- Create a project in `gcloud`
+- Create a simple flask application
+- Create needed files
+- Deploying the app in Google App Engine
+
+# Practice
+
+```sh
+$ gcloud auth login
+```
+
+# Practice
+
+## steps
+
+- Authenticate with **`gcloud`**
 - **Create a project in `gcloud`**
 - Create a simple flask application
 - Create needed files
@@ -118,6 +136,7 @@ mcsbt-flask-example-1
 
 ## steps
 
+- Authenticate with **`gcloud`**
 - Create a project in **`gcloud`**
 - **Create a simple flask application**
 - Create needed files
@@ -165,6 +184,7 @@ main.py
 
 ## steps
 
+- Authenticate with **`gcloud`**
 - Create a project in **`gcloud`**
 - Create a simple flask application
 - **Create needed files**
@@ -212,6 +232,7 @@ app.yaml              main.py          requirements.txt
 
 ## steps
 
+- Authenticate with **`gcloud`**
 - Create a project in **`gcloud`**
 - Create a simple flask application
 - Create needed files
