@@ -3,28 +3,83 @@ title: Advanced Programming with Python
 subtitle: Session 2
 author: Pepe García <jgarciah@faculty.ie.edu>
 email: jgarciah@faculty.ie.edu
-date: 2020-04-20
-lang: en
 ---
 
 # Plan for today
 
->- HTTP Overview
->- Review homework
+>- Flask routing
+>- HTTP clients with Requests
 >- returning different status codes
 >- using request bodies
 
-# HTTP Overview
 
-@pepe: whiteboard
+# HTTP routes
 
-# HTTP Overview
+We can also capture part of the path as a variable:
 
-Regarding the `requests`, here's a great tutorial about `requests`.
+```python
+@app.route("/hello/<name>")
+def hello(name):
+    return "hello " + name
+```
 
-https://realpython.com/python-requests/
+# HTTP methods
 
-# Homework
+One can specify which methods the function handles in the **methods**
+parameter
+
+```python
+@app.route("/hello", methods=["GET"])
+def hello():
+    return "hi!"
+
+@app.route("/goodbye", methods=["POST"])
+def goodbye():
+    return "bye!"
+```
+
+# Returning JSON
+
+Flask has a **jsonify** function that we can use to convert the data we
+want to JSON:
+
+```python
+from flask import Flask, jsonify
+
+app = Flask("hello server")
+
+@app.route("/hello")
+def hello():
+    return jsonify({"message": "hello", "name": "Pepe"})
+```
+
+# HTTP
+
+## Exercise
+
+Accept the assignment and clone it **https://bit.ly/3saKAMq**
+
+Let's do the **`tweeter_json.py`** exercise from the homework repository.
+
+# HTTP clients
+
+So far, we've been focusing only on one side of the client-server side, the server.
+
+However, we can create HTTP clients in Python too!
+
+# HTTP clients. `requests` library
+
+We can use requests to get an HTTP response as follows:
+
+```python
+import requests
+
+response = requests.get("url")
+
+data = response.json()
+
+print(data)
+```
 
 # Status codes
 
@@ -110,6 +165,8 @@ def get_user(user_id):
 
 # Status Codes
 
+See `exercises/translations.py`
+
 ## Practice
 
 Let's implement a simple flask server that finds the correct
@@ -134,33 +191,6 @@ response.
 
 Whenever something crashes in our application, flask shows the error in
 a non-very-nice way.
-
-# Error handling
-
-## Practice
-
-Create a flask server exposing just one route that receives two numbers
-and divides the first by the second.
-
-Validate the data and be sure to return a meaningful status code
-
-# Error handling
-
-Flask provides a nice way of handling errors that may happen in  our
-application, such as **404** or **500**.
-
-```python
-@app.errorhandler(500)
-def handle_500_error(error):
-    return jsonify({"error": "500 Internal Server Error"}), 500
-```
-
-# Error handling
-
-## Practice
-
-Let's see the default behaviour and the effect we get when adding the
-error handler
 
 # HTTP request bodies
 
@@ -212,7 +242,11 @@ request.post("http://localhost:5000/get_body", json=dictionary)
 
 ## Homework
 
-Create a API that allows tht user to:
+Modify the tweeter_json example to accept adding new tweets too.  Create the client side code in another file in order to call it.
 
 >- submit **tweets** ({\"user\": \"pepe\", \"tweet\": \"Hello world\"})
 >- List all tweets
+
+# Useful links
+
+https://realpython.com/python-requests/

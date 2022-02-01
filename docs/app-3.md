@@ -12,6 +12,33 @@ lang: en
 - Sending files from folder
 - working with HTML
 
+# Error handling
+
+## Practice
+
+Create a flask server exposing just one route that receives two numbers
+and divides the first by the second.
+
+Validate the data and be sure to return a meaningful status code
+
+# Error handling
+
+Flask provides a nice way of handling errors that may happen in  our
+application, such as **404** or **500**.
+
+```python
+@app.errorhandler(500)
+def handle_500_error(error):
+    return jsonify({"error": "500 Internal Server Error"}), 500
+```
+
+# Error handling
+
+## Practice
+
+Let's see the default behaviour and the effect we get when adding the
+error handler
+
 # Homework
 
 # Serving static files
