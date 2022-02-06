@@ -1,45 +1,74 @@
 ---
 title: Advanced Programming with Python
-author: Pepe García
+author: Pepe García <jgarciah@faculty.ie.edu>
 email: jgarciah@faculty.ie.edu
-date: 2020-04-20
 lang: en
 ---
 
 # Plan for today
 
-- Review homework
-- Sending files from folder
-- working with HTML
+>- Review yesterday's
+>- Dealing with request bodies
+>- Sending files from folder
+>- working with HTML
 
-# Error handling
+# HTTP request bodies
 
-## Practice
+So far, we've been sending data in response bodies but haven't yet
+seen how to receive data from requests.
 
-Create a flask server exposing just one route that receives two numbers
-and divides the first by the second.
+Something we'll need to consider is that not all HTTP verbs allow us to
+set request bodies:
 
-Validate the data and be sure to return a meaningful status code
+  verb     allows body?
+  -------- -----------
+  GET      **no**
+  HEAD     **no**
+  DELETE   **no**
+  PUT      **yes**
+  PATCH    **yes**
+  POST     **yes**
 
-# Error handling
+# HTTP request bodies
 
-Flask provides a nice way of handling errors that may happen in  our
-application, such as **404** or **500**.
+## Getting request body (server)
 
 ```python
-@app.errorhandler(500)
-def handle_500_error(error):
-    return jsonify({"error": "500 Internal Server Error"}), 500
+from flask import request
+
+@app.route("/get-body", methods = [ "POST" ])
+def get_body():
+    body = request.get_json()
+    print(body)
+    return "body received!" + str(body)
 ```
 
-# Error handling
+# HTTP request bodies
 
-## Practice
+## Using request body (client)
 
-Let's see the default behaviour and the effect we get when adding the
-error handler
+```python
+import requests
 
-# Homework
+dictionary = {
+  "name": "dict",
+  "purpose": "none at all"
+}
+
+url = "http://localhost:5000/get-body"
+
+request.post(url, json=dictionary)
+```
+
+# HTTP request bodies
+
+## Exercise
+
+Modify the tweeter_json example to accept adding new tweets too.  Create the client side code in another file in order to call it.
+
+>- submit **tweets** ({\"user\": \"pepe\", \"tweet\": \"Hello world\"})
+>- List all tweets
+
 
 # Serving static files
 
@@ -63,14 +92,9 @@ def serve_image(image):
 
 # Serving static files
 
-Do you see something that can go wrong in the previous route?  Try to
-search for an image that's not there.
+## Example
 
-# Practice
-
-## https://github.com/app-2020/app-sync-4
-
-See example-1
+See `session-3/example-1`
 
 # Serving HTML
 
@@ -85,163 +109,12 @@ def index():
     return send_from_directory("html", filename="index.html")
 ```
 
-# HTML
+# Exercise
 
-**HTML** stands for **Hypertext Markup Language**.  It's a language
-that describes how the information\
-should be presented in webpages
+## Exercise
 
-# HTML
+See `exercises/static_files`
 
-HTML documents are defined by tags, which look as follows:
+# Useful links
 
-```html
-<tag>content</tag>
-```
-
-# HTML
-
-Let's see a real world example
-
-```html
-<p>this is a paragraph</p>
-```
-
-the **`<p>`** tag is used to represent paragraphs!
-
-# HTML structure
-
-In HTML, all the visible structure of the document must go inside the
-**`<body>`** tag
-
-```html
-<body>
-  <p>the 'p' tag represents a paragraph</p>
-</body>
-```
-
-# HTML structure
-
-On the other hand, all the HTML tags that are not meant to be rendered
-go inside the **`<head>`** tag.
-
-For example, the title tag is one of these tags:
-
-```html
-<head>
-  <title>this is the title</title>
-</head>
-<body>
-  <p>the 'p' tag represents a paragraph</p>
-</body>
-```
-
-# HTML structure
-
-Finally, for an HTML document to be well formed, it needs to be wrapped
-in the HTML tag
-
-```html
-<html>
-  <head>
-    <title>this is the title</title>
-  </head>
-  <body>
-    <p>the 'p' tag represents a paragraph</p>
-  </body>
-</html>
-```
-
-# HTML structure
-
-Let's create our first web page!
-
-# Some HTML tags
-
-Now let's see some HTML tags
-
-# Paragraphs
-
-text paragraphs in HTML are represented with the **`<p>`** tag
-
-```html
-<p>
-this is the first paragraph of my text.  As you can see it
-also contains <strong>other tags</strong>
-</p>
-<p>
-In the second paragraph, I wanted to write this other thing
-but I'm running out of ideas for what to write
-</p>
-<p>
-In the last paragraph of my text I want to <strong>finish</strong>
-it
-</p>
-```
-
-# Headings
-
-Headings are used in html in the same way a word doc, or in a newspaper,
-to capture reader's attention.
-
-
-What's the most important heading in the image? and the second one?
-
-# Headings
-
-HTML provides us with 6 different tags to represent 6 different levels
-of headings.
-
-```html
-<h1>this is the h1</h1>
-<h2>this is the h2</h2>
-<h3>this is the h3</h3>
-<h4>this is the h4</h4>
-<h5>this is the h5</h5>
-<h6>this is the h6</h6>
-```
-
-# Hyperlinks
-
-Hyperlinks are the most vital part of HTML.  They allow us to go to
-other documents when clicking them.
-
-# Hyperlinks
-
-We create links in HTML using the **`<a>`** tag. `a`, in this case, stands for _anchor_.
-
-```html
-<a>this is a link, but doesn't have an address to go to...</a>
-```
-
-In order to give an address to the link, we need to use the **href
-attribute**:
-
-```html
-<a href="https://google.com">this takes you to Google!</a>
-```
-
-# Images
-
-We use the **`img`** tag with the **`src`** attribute in order to embed
-images in our HTML documents.
-
-The `src` attribue can be either a route to a local file, or a url to
-a file in the Internet.
-
-```python
-<img src="/home/pepe/Desktop/image.jpg">
-```
-
-# Homework
-
-Create the HTML for what it could be your Wikipedia entry.
-
-- different parts of your life
-- links to your presence in the web
-
-# Resources
-
-Codecademy course to learn HTML: **<https://www.codecademy.com/courses/learn-html>**
-
-Mozilla development network docs: **<https://developer.mozilla.org/en-US/docs/Web/HTML>**
+https://realpython.com/python-requests/
