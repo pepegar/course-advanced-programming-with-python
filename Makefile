@@ -10,7 +10,7 @@ $(output)/%.pdf: $(source)/%.md
 		--pdf-engine=xelatex	 \
 		--variable fontsize=12pt \
 		--variable theme=Madrid \
-	    --variable monofont="PragmataPro Mono" \
+		--variable monofont="PragmataPro Mono" \
 		-f markdown $< \
 		-t beamer \
 		--highlight-style tango \

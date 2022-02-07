@@ -3,7 +3,6 @@ title: Advanced Programming with Python
 subtitle: HTML and Flask
 author: Pepe García <jgarciah@faculty.ie.edu>
 email: jgarciah@faculty.ie.edu
-date: 2020-04-20
 lang: en
 ---
 
@@ -14,82 +13,6 @@ lang: en
 - Using HTML templates
 
 # Homework
-
-# HTML Refresher
-
-Let's refresh a couple of HTML elements learnt the last day
-
-# HTML. **`div`**
-
-::: {.columns}
-:::: {.column width=30%}
-
-&nbsp;
-
-&nbsp;
-
-We'll use **`<div>`** as a generic container in HTML.
-
-::::
-:::: {.column width=70%}
-
-```html
-<div>
-  <p>HTML is such a cool language</p>
-  <p>We can group things inside div elements</p>
-</div>
-```
-
-::::
-:::
-
-&nbsp;
-
-**`<div>`** will take all the available width.
-
-# HTML. **`span`**
-
-::: {.columns}
-:::: {.column width=70%}
-
-```html
-<span>
-  <img src="https://google.com/logo.png"/>
-</span>
-<span>you can see Google's logo to the left</span>
-```
-
-::::
-:::: {.column width=30%}
-
-&nbsp;
-
-We'll use **`<span>`** as a generic container in HTML.
-
-::::
-:::
-
-&nbsp;
-
-They will stack besides the previous one.
-
-# HTML. **`ul`**
-
-We'll use **`<ul>`** for representing unordered lists in  HTML.  Each one
-of the elements of the list will be created using the **`<li>`** tag.
-
-```html
-<div>
-  There are four members in The Beatles:
-
-  <ul>
-    <li>Ringo</li>
-    <li>John</li>
-    <li>Paul</li>
-    <li>George</li>
-  </ul>
-</div>
-```
 
 # HTML on Flask
 
@@ -118,7 +41,6 @@ What problems do you see whith this workflow?
 >- tedious
 
 # Templates
-
 
 ::: {.columns}
 :::: {.column}
@@ -250,9 +172,10 @@ or
 
 # Control statements. **`for`**
 
-Apart from the double curly brackets (**`{{ }}`**), that will be
-substituted with the corresponding value, flask templates also support
-**control statements** using **`{% %}`** blocks.
+Another very useful control statement we can use in Flask is
+**`for`**.  It has the same behavior as Python's **`for`**, it allows
+us to iterate over a list and do something for each element, in our
+case, render something.
 
 &nbsp;
 
@@ -331,6 +254,14 @@ After we've created our base template we can extend it from others!
 
 Using template inheritance, fix the **example-1** so that we don't
 repeat ourselves.
+
+# Shameless plug
+
+I've a YouTube series about Flask, and some other cool things.
+
+<https://www.youtube.com/channel/UCIg0tBR2wx7xqneTIpwWSUw/playlists>
+
+You know the drill, smash that subscribe button!
 
 # Recap
 
