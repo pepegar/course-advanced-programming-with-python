@@ -3,69 +3,14 @@ title: Advanced Programming with Python
 subtitle: Forms in HTML and Flask
 author: Pepe García <jgarciah@faculty.ie.edu>
 email: jgarciah@faculty.ie.edu
-date: 2020-04-20
-lang: en
 navigation: frame
 ---
 
 # Plan for today
 
-- Errata from last day: HTML escaping, rich text vs plain text
 - HTML forms
-- handling HTML forms in flask
-- Time for the individual assignment
-
-# HTML escaping
-
-Remember how we escaped characters in Python when, for example we
-wanted to use the double quote inside a string?
-
-```python
-value = "\"like this, for example\""
-```
-
-# HTML escaping
-
-
-::: {.columns}
-:::: {.column}
-
-In HTML we will need something similar for lots of characters. We
-cannot directly write **`<`**, for example, and expect it to be
-rendered whent he page gets rendered, since **`<`** is already part of
-the markup language.
-
-&nbsp;
-
-We need to transform it to HTML entities:
-
-::::
-:::: {.column}
-
-. . .
-
-| character | HTML Entity |
-|:----------|:------------|
-| `"`       | `&quot;`    |
-| `'`       | `&apos;`    |
-| `&`       | `&amp;`     |
-| `<`       | `&lt;`      |
-| `>`       | `&gt;`      |
-| `é`       | `&eacute;`  |
-| `à`       | `&agrave;`  |
-
-::::
-:::
-
-# HTML escaping
-
-
-# Rich text vs Plain text
-
-Rich text editors, such as **TextEdit.app** in Mac, will convert the
-values we write to HTML entities directly.
-
-We need to use a plain text editor instead (Spyder, VSCode, Emacs...)
+- Handling HTML forms in flask
+- Time for QA
 
 # HTML forms
 
@@ -124,9 +69,9 @@ We'll always need to give a unique **`name`** to it and a **`type`**
 
 There are a lot of types of inputs we can use.
 
-. . .
+[`https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input)
 
-https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input
+. . .
 
 ```html
 <input name="pass" type="password">
@@ -137,8 +82,6 @@ https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input
 # HTML forms. Submit
 
 In order to create a button that submits the **form**, we'll use
-
-**<input type="submit">**
 
 ```html
 <input type="submit" value="send the form!">
@@ -182,20 +125,21 @@ the keys in the **`form`** dictionary are the values we put in the
 
 # Differences between GET and POST in forms
 
-The big difference between them is that, when selecting `GET`, the
-data will be sent as query parameters, while when selecting `POST`, it
-will be sent in the request body
+The big difference between them is that, when selecting **`GET`**, the
+data will be sent as query parameters (in the URL), while when
+selecting **`POST`**, it will be sent in the request body
 
 # Handling HTML forms in flask
 
-## Exercise
+## Exercise - paymepal
 
-Create a login form that checks if the `user` and `password` sent by
-the user exist in the database.
+In this exercise we'll see how can we handle user input via forms.
 
-In case they exist, render the `private.html` template,
+. . .
 
-Otherwise, render the `unauthorized.html` template with a 401 unauthorized method
+>- in `index.html`: create a login form that contains two fields, a `user` and `password`, and a `submit` input too.
+>- in `paymepal.py`: check if the user exists in the users dictionary, from the data module.  If the user exists, render `private.html`, and `unauthorized.html` otherwise.
+>- in `paymepal.py`: get the transactions from the user if there is any, and render them in `private.html`.
 
 # Recap
 
